@@ -3,6 +3,7 @@ import { Employee } from './employee';
 import { HttpClient } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
 import { connectableObservableDescriptor } from 'rxjs/internal/observable/ConnectableObservable';
+import { Observable } from 'rxjs';
 
 
 
@@ -21,7 +22,7 @@ export class EmployeeService {
 
 
   //1 Get all employees
-  getAllEmployees(){
+  getAllEmployees(): void{
     this.httpClient.get(environment.apiUrl + '/api/employees')
     .toPromise()
     .then(
@@ -34,5 +35,23 @@ export class EmployeeService {
       }
     );
   }
+
+  //2 Observable Types
+  getAllEmployeesList(): Observable<any>{
+    return this.httpClient.get(environment.apiUrl + '/api/employees');
+  }
+
+  //3 INSERT
+  insertEmployee(employee:Employee): Observable<any>{
+    return this.httpClient.post(environment.apiUrl + '/api/employees',employee);
+  }
+
+  //4 UPDATE
+  updateEmployee(employee:Employee): Observable<any>{
+    return this.httpClient.put(environment.apiUrl + '/api/employees',employee);
+  }
+  //% DELETE
+
+
 
 }

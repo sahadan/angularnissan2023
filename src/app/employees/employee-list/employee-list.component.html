@@ -16,12 +16,18 @@
         </thead>
         <tbody>
             <tr *ngFor="let employee of employeeService.employees">
-                <td>{{employee.empId}}</td>
-                <td>{{employee.empName}}</td>
-                <td>{{employee.designation}}</td>
-                <td>{{employee.salary}}</td>
-                <td>{{employee.dateOfJoining | date: "dd-MMM-yyyy"}}</td>
-                <td></td>
+                <td (click)="populateForm(employee)">{{employee.empId}}</td>
+                <td (click)="populateForm(employee)">{{employee.empName}}</td>
+                <td (click)="populateForm(employee)">{{employee.designation}}</td>
+                <td (click)="populateForm(employee)">{{employee.salary}}</td>
+                <td (click)="populateForm(employee)">{{employee.dateOfJoining | date: "dd-MMM-yyyy"}}</td>
+                <td>
+                    <button class="btn btn-sm btn-outline-info"
+                    (click)="updateEmployee(employee.empId)">E</button>
+                    &nbsp;
+                    <button class="btn-sm btn-outline-danger"
+                    (click)="deleteEmployee(employee.empId)">X</button>
+                </td>
             </tr>
         </tbody>
 

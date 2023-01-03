@@ -8,6 +8,7 @@ export class Employee {
     salary: number=0;
     empPhoneNumber:string='';
     deptId: number=0;
+    isActive: boolean=false;
 
     //Object Oriented
     department: Department= new Department();
