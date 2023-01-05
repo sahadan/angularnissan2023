@@ -10,7 +10,8 @@ import { EmployeeListComponent } from './employees/employee-list/employee-list.c
 import { HttpClientModule} from '@angular/common/http';
 import { EmployeeService } from './shared/employee.service';
 import { FormsModule,ReactiveFormsModule } from '@angular/forms';
-
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ToastrModule } from 'ngx-toastr';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,9 @@ import { FormsModule,ReactiveFormsModule } from '@angular/forms';
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    BrowserAnimationsModule, // required animations module
+    ToastrModule.forRoot(), // ToastrModule added
   ],
   providers: [EmployeeService],
   bootstrap: [AppComponent]

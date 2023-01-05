@@ -4,7 +4,7 @@
 
     <!--EmployeeID --AutoGenerate-->
     <div class="form-group">
-        <input type="text" readonly name="empId"
+        <input type="hidden" readonly name="empId"
         [(ngModel)]="employeeService.formEmployeeData.empId">
     </div>
     <!--empName-->
@@ -105,7 +105,7 @@
         </div>
     </div>
     <!--deptId: number=0;-->
-    <div class="form-group">
+    <!--div class="form-group">
         <label>
             DeptId:
         </label>
@@ -115,14 +115,36 @@
             class="form-control" placeholder="Enter Dept number"
             required
             [ngClass]="{'is-invalid': deptId.touched && deptId.invalid}"
-        />
+        /-->
        <!--validation Error message-->
-       <div class="validation-error" *ngIf="deptId.touched && deptId.invalid">
+       <!--div class="validation-error" *ngIf="deptId.touched && deptId.invalid">
             <div *ngIf="deptId.errors.required">
                 DeptId is required!
             </div>
         </div>
+    </div-->
+    <!--Department dropdown list-->
+    <div class="form-group">
+        <label>
+            Department:
+        </label>
+        <select name="deptId" id="deptId"
+            #deptId="ngModel"
+            [(ngModel)]="employeeService.formEmployeeData.deptId"
+            class="form-control"
+            required>
+            <option value=0 selected disabled>---Select Department---</option>
+            <option *ngFor="let dept of employeeService.departments"
+            value="{{dept.deptId}}">{{dept.deptName}}</option>
+        </select>
+       <!--validation Error message-->
+       <div class="validation-error" *ngIf="deptId.touched && deptId.invalid">
+            <div *ngIf="deptId.errors.required">
+                Department is required!
+            </div>
+        </div>
     </div>
+
 
     <!--isActive-->
     <div class="form-group">

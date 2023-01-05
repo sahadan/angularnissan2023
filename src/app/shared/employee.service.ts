@@ -4,6 +4,7 @@ import { HttpClient } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
 import { connectableObservableDescriptor } from 'rxjs/internal/observable/ConnectableObservable';
 import { Observable } from 'rxjs';
+import { Department } from './department';
 
 
 
@@ -17,7 +18,10 @@ export class EmployeeService {
 
   //list of Employees
   employees: Employee[]; // all employees
-
+  
+  //list of Departments
+  departments: Department[]; // all departments
+  
   constructor(private httpClient: HttpClient) { } // Constructor Injection : DI
 
 
@@ -51,6 +55,26 @@ export class EmployeeService {
     return this.httpClient.put(environment.apiUrl + '/api/employees',employee);
   }
   //% DELETE
+
+  //Get employee by id
+  getEmployeeById(id: number): Observable<any> {
+     return this.httpClient.get(environment.apiUrl + "/api/employees/id/" + id);
+  }
+
+  //Get all departments -- to display in dropdown
+  getAllDepartments(): void{
+    this.httpClient.get(environment.apiUrl + '/api/departments')
+    .toPromise()
+    .then(
+      (response) =>{
+        console.log(response);
+        this.departments=response as Department[];
+      },
+      (error)=>{
+        console.log(error);
+      }
+    );
+  }
 
 
 
