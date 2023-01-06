@@ -10,6 +10,10 @@ import { EmployeeService } from 'src/app/shared/employee.service';
 })
 export class EmployeeListComponent implements OnInit {
 
+  //declare variables
+  term: string;
+  page: number=1;
+
   constructor(public employeeService: EmployeeService,
     private router: Router ) { }
 
@@ -36,10 +40,11 @@ export class EmployeeListComponent implements OnInit {
   }
 
   //2 Update Employee
-  updateEmployee(empId: number){
-    console.log(empId);
+  updateEmployee(employee: Employee){
+    console.log(employee);
     // navigate to Edit Form with selected employee details
-    this.router.navigate(['employeeadd',empId])
+    this.populateForm(employee);
+    this.router.navigate(['employeeadd',employee.empId])
     // localhost:4200/employeeadd/2
   }
 

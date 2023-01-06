@@ -12,6 +12,8 @@ import { EmployeeService } from './shared/employee.service';
 import { FormsModule,ReactiveFormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
+import { Ng2SearchPipeModule } from 'ng2-search-filter';
+import {NgxPaginationModule} from 'ngx-pagination'; // 
 
 @NgModule({
   declarations: [
@@ -28,6 +30,8 @@ import { ToastrModule } from 'ngx-toastr';
     ReactiveFormsModule,
     BrowserAnimationsModule, // required animations module
     ToastrModule.forRoot(), // ToastrModule added
+    Ng2SearchPipeModule,
+    NgxPaginationModule
   ],
   providers: [EmployeeService],
   bootstrap: [AppComponent]

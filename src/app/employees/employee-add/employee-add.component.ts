@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { EmployeeService } from 'src/app/shared/employee.service';
 import { ToastrService } from 'ngx-toastr';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 
 @Component({
@@ -17,14 +17,18 @@ export class EmployeeAddComponent implements OnInit {
 
   constructor(public employeeService: EmployeeService,
     private toastr: ToastrService,
-    private route: ActivatedRoute) { } // Inject
+    private route: ActivatedRoute,
+    private router: Router) { } // Inject
 
   ngOnInit(): void { //Life Cycle hook
-    //get all deprtments
+
+    //get all departments
     this.employeeService.getAllDepartments();
 
     //getting data from url
     this._empId=this.route.snapshot.params['empId'];
+    // @Input
+    // @Output
   }
 
   //Submit Method
@@ -36,11 +40,13 @@ export class EmployeeAddComponent implements OnInit {
     if(_addEmpId ==0 || _addEmpId==null){
       //INSERT
       this.addEmployee(form);
+      this.router.navigateByUrl("/employeelist");
       //window.location.reload();
- 
+      
     }else{
       //UPDATE
       this.editEmployee(form);
+      this.router.navigateByUrl("/employeelist");
       //window.location.reload();
     }
     
@@ -71,10 +77,11 @@ export class EmployeeAddComponent implements OnInit {
       (result)=>{
         
         console.log(result);
-        
+        this.toastr.info("Employee record has been updated!","EmpAppv2023");
       },
       (error)=>{
         console.log(error);
+        this.toastr.error("Something wrong...try again","EmpAppv2023");
       }
 
     );
