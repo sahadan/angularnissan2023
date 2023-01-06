@@ -13,14 +13,16 @@ import { FormsModule,ReactiveFormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
-import {NgxPaginationModule} from 'ngx-pagination'; // 
+import {NgxPaginationModule} from 'ngx-pagination';
+import { CustomersComponent } from './customers/customers.component'; // 
 
 @NgModule({
   declarations: [
     AppComponent,
     EmployeesComponent,
     EmployeeAddComponent,
-    EmployeeListComponent
+    EmployeeListComponent,
+    CustomersComponent
   ],
   imports: [
     BrowserModule,
