@@ -10,6 +10,7 @@ export class Employee {
     deptId: number=0;
     isActive: boolean=false;
 
-    //Object Oriented
+    //Object Oriented Model
+    //New amendments---
     department: Department= new Department();
 }
