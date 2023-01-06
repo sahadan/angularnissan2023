@@ -7,6 +7,9 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CustomersComponent implements OnInit {
 
+  //declare variables
+  customerId: number=0;
+
   constructor() { }
 
   ngOnInit(): void {
